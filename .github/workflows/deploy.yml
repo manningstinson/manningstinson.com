@@ -16,4 +16,6 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /var/www/manningstinson.com
+            # Set the correct SSH key for Git to use when connecting to GitHub
+            git config --local core.sshCommand "ssh -i ~/.ssh/github_push"
             git pull origin main
