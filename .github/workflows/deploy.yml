@@ -2,6 +2,8 @@ name: Deploy to Production
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,4 +14,6 @@ jobs:
           host: 64.225.9.200
           username: root
           key: ${{ secrets.DEPLOY_KEY }}
-          script: cd /var/www/manningstinson.com && git pull origin main
+          script: |
+            cd /var/www/manningstinson.com
+            git pull origin main
